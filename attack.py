@@ -2,18 +2,21 @@ import random
 
 
 class Enemy:
-    atkl = 60
-    atkh = 80
+
+    # 'init' function behaves as a constructor in python
+    def __init__(self, atkl, atkh):
+        self.atkh = atkh
+        self.atkl = atkl
 
     # 'self' is the entire object of this class
     # 'self' is analogous to 'this'
     def getAtk(self):
         print(self.atkl)
 
-enemy1 = Enemy()    # creating object of Enemy classs
+enemy1 = Enemy(40, 49)    # creating object of Enemy classs
 enemy1.getAtk()
 
-enemy2 = Enemy()
+enemy2 = Enemy(75, 90)
 enemy2.getAtk()
 '''
 
