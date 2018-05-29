@@ -1,42 +1,4 @@
-import random
+from classes.enemy import Enemy
 
-
-class Enemy:
-
-    # 'init' function behaves as a constructor in python
-    def __init__(self, atkl, atkh):
-        self.atkh = atkh
-        self.atkl = atkl
-
-    # 'self' is the entire object of this class
-    # 'self' is analogous to 'this'
-    def getAtk(self):
-        print(self.atkl)
-
-enemy1 = Enemy(40, 49)    # creating object of Enemy classs
-enemy1.getAtk()
-
-enemy2 = Enemy(75, 90)
-enemy2.getAtk()
-'''
-
-playerhp = 260
-enemyatkl = 60
-enemyatkh = 80
-
-while playerhp > 0:
-    dmg = random.randrange(enemyatkl, enemyatkh)
-    playerhp = playerhp - dmg
-
-    if playerhp <= 30:
-        playerhp = 30
-
-    print("Enemy strikes for", dmg, "points of change. Current HP is", playerhp)
-
-    if playerhp > 30:
-        continue
-
-    print("You have low health: You have been teleported to somewhere else")
-    break
-
-'''
+enemy1 = Enemy(200, 60)
+print("HP :", enemy1.get_hp())
