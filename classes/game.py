@@ -26,9 +26,9 @@ class Person:
         return random.randrange(self.atkl, self.atkh)
 
     def generate_spell_damage(self, i):
-        ngl = self.magic[i]["dmg"] - 5
-        ngh = self.magic[i]["dmg"] + 5
-        return random.randrange(ngl, ngh)
+        mgl = self.magic[i]["dmg"] - 5
+        mgh = self.magic[i]["dmg"] + 5
+        return random.randrange(mgl, mgh)
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -59,14 +59,14 @@ class Person:
 
     def choose_action(self):
         i =1
-        print("Actions")
+        print(bcolors.OKBLUE + bcolors.BOLD + "Actions" + bcolors.ENDC)
         for item in self.actions:
             print(str(i) + ":", item)
             i += 1
 
     def choose_magic(self):
         i =1
-        print("Magic")
+        print(bcolors.OKBLUE + bcolors.BOLD + "Magic" + bcolors.ENDC)
         for spell in self.magic:
-            print(str(i) + ":", spell["name"], "(cost:", str(spell["np"]) + ")")
+            print(str(i) + ":", spell["name"], "(cost:", str(spell["cost"]) + ")")
             i += 1
