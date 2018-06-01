@@ -1,5 +1,7 @@
 from classes.game import Person, bcolors
 from classes.magic import Spell
+from classes.inventory import Item
+
 
 # Create Black Magic
 fire = Spell("Fire", 10, 100, "black")
@@ -12,9 +14,22 @@ quake = Spell("Quake", 14, 120, "black")
 cure = Spell("Cure", 12, 120, "white")
 cura = Spell("Cura", 18, 200, "white")
 
+
+#Create some Items
+potion = Item("Potion", "potion", "Heal 50 HP", 50)
+hipotion = Item("Hi-Potion", "potion", "Heal 100 HP", 100)
+superpotion = Item("Super Potion", "potion", "Heal 500 HP", 500)
+elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
+hielixer = Item("MegaElixer", "elixer", "Fully restores party's HP/MP ", 9999)
+
+grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
+
+player_spells = [fire, thunder, blizzard, meteor, cure, cura]
+player_items = [potion, hipotion, superpotion, elixer, hielixer, grenade]
+
 # Instantiate People
-player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, cure, cura])
-enemy = Person(1200, 65, 45, 25, [])
+player = Person(460, 65, 60, 34, player_spells, player_items)
+enemy = Person(1200, 65, 45, 25, [], [])
 
 running = True
 i = 0
@@ -35,6 +50,9 @@ while running:
         player.choose_magic()
         magic_choice = int(input("Choose magic : ")) - 1
 
+        if magic_choice == -1:
+            continue
+
         spell = player.magic[magic_choice]
         magic_dmg = spell.generate_damage()
 
@@ -52,10 +70,18 @@ while running:
         elif spell.type == "black":
             enemy.take_damage(magic_dmg)
             print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "HP" + bcolors.ENDC)
+    elif index == 2:
+        player.choose_item()
+        item_choice = int(input("Choose item: ")) - 1
 
+        if item_choice == -1:
+            continue
 
-        enemy.take_damage(magic_dmg)
-        print(bcolors.OKBLUE + "\n" + spell.name + "deals", str(magic_dmg), "points of damage" + bcolors.ENDC)
+        item = player_items[item_choice]
+
+        if item.type == "potion":
+            player.heal(item.prop)
+            print(bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.prop), "HP" + bcolors.ENDC)
 
     enemy_choice = 1
 
