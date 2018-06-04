@@ -1,18 +1,7 @@
 import requests
-from io import BytesIO
-from PIL import Image
 
-r = requests.get("https://wallpapercave.com/wp/grWD6zh.jpg")
+my_data = { "firstname":"Mickey" ,"lastname":"Mouse" }
+r = requests.post("https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit/action_page.php", my_data)
 
-print("Status Code: ", r.status_code)
-
-image = Image.open(BytesIO(r.content))
-
-print(image.size, image.format, image.mode)
-path = "./image." + image.format
-
-
-try:
-    image.save(path, image.format)
-except IOError:
-    print("Cannot save image")
+f = open("myFile.html", "w+")
+f.write(r.text)
