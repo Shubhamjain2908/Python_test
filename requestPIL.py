@@ -9,7 +9,7 @@ print("Status Code: ", r.status_code)
 image = Image.open(BytesIO(r.content))
 
 print(image.size, image.format, image.mode)
-path = "./image."  + image.format
+path = "./image." + image.format
 
 
 try:
