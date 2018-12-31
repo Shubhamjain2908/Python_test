@@ -66,8 +66,12 @@ player_items = [
     }
 ]
 # Instantiate People
-player = Person(460, 65, 60, 34, player_spells, player_items)
-enemy = Person(1200, 65, 45, 25, [], [])
+player1 = Person("Valos: ", 460, 65, 60, 34, player_spells, player_items)
+player2 = Person("Nick: ", 460, 65, 60, 34, player_spells, player_items)
+player3 = Person("Robot: ", 460, 65, 60, 34, player_spells, player_items)
+enemy = Person("Terminator: ", 1200, 65, 45, 25, [], [])
+
+player = [player1, player2, player3];
 
 running = True
 i = 0
